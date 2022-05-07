@@ -1,4 +1,5 @@
 Blockly.JavaScript["i2c_scanner_begin"] = function (block) {
+  var dropdown_i2c_port = block.getFieldValue('I2C_PORT');
   var code =
 `
 #EXTINC
@@ -9,7 +10,7 @@ Blockly.JavaScript["i2c_scanner_begin"] = function (block) {
 I2CScanner scanner;
 #END
 
-scanner.Init();
+scanner.Init(&${dropdown_i2c_port});
 
 \n
 `;

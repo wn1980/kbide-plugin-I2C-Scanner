@@ -24,7 +24,7 @@ class I2CScanner
 	uint8_t Low_Address = 1;
 	uint8_t High_Address = 127;
 	
-	void Init();
+	void Init(TwoWire *theWire=&Wire);
 
 	bool Scan();
 	bool Scan(byte address);
@@ -37,6 +37,9 @@ class I2CScanner
 	void Execute(I2C_Callback callback);
 	void Execute(byte address, I2C_Callback callback);
 	void Execute(byte addreses[], uint8_t length, I2C_Callback callback);
+
+ private:
+  TwoWire *_wire;
 };
 
 #endif

@@ -33,14 +33,15 @@ void I2CScanner::printResult()
 
 byte I2CScanner::scan(byte address)
 {
-	Wire.beginTransmission(address);
-	byte error = Wire.endTransmission();
+	_wire->beginTransmission(address);
+	byte error = _wire->endTransmission();
 	return error;
 }
 
-void I2CScanner::Init()
+void I2CScanner::Init(TwoWire *theWire)
 {
-	Wire.begin();
+	_wire = theWire;
+	_wire->begin();
 }
 
 bool I2CScanner::Scan()
